@@ -1,0 +1,917 @@
+{
+    "contractName": "TokenFarm",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "contract DappToken",
+                    "name": "_dappToken",
+                    "type": "address"
+                },
+                {
+                    "internalType": "contract DaiToken",
+                    "name": "_daiToken",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "inputs": [],
+            "name": "daiToken",
+            "outputs": [
+                {
+                    "internalType": "contract DaiToken",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "dappToken",
+            "outputs": [
+                {
+                    "internalType": "contract DappToken",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "name",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "stakeTokens",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "stakingBalance",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract DappToken\",\"name\":\"_dappToken\",\"type\":\"address\"},{\"internalType\":\"contract DaiToken\",\"name\":\"_daiToken\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"daiToken\",\"outputs\":[{\"internalType\":\"contract DaiToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"dappToken\",\"outputs\":[{\"internalType\":\"contract DappToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"stakeTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"stakingBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dani/Desktop/dApp/src/contracts/TokenFarm.sol\":\"TokenFarm\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dani/Desktop/dApp/src/contracts/DaiToken.sol\":{\"keccak256\":\"0x9994ae12379cbbdc5d156999cf7eff7900497b87e56ef52e93983b6dc3ff3cae\",\"urls\":[\"bzz-raw://1de273e47d1a20f36b1a28c07c6191234201af03f2634452e8edef97a2d18d71\",\"dweb:/ipfs/QmRuyFQQpHnmsPfa3AhoBYa3s4Mck21ZkEZjhc3SMDRKjM\"]},\"/Users/dani/Desktop/dApp/src/contracts/DappToken.sol\":{\"keccak256\":\"0x44c19a6d904ec409fe765920ae11c9c1699f0ba51d3845ec43e03d88520f2f4e\",\"urls\":[\"bzz-raw://61b9263417349e6b6bcfb2f7524f96ad849e051e6dff68d8db5f8b91cc69efab\",\"dweb:/ipfs/QmV3y27ebK9BuxPwM1utHKMoLvUoyViSfjrjSrszNypZi7\"]},\"/Users/dani/Desktop/dApp/src/contracts/TokenFarm.sol\":{\"keccak256\":\"0xe046253cbf62abd7af817eb9544846c129b6a1b11b59368a992751ce50e87b83\",\"urls\":[\"bzz-raw://d83d38a298be3fc450f50ab86c21e36072b249deb5c30b642f364f219fc2e2fd\",\"dweb:/ipfs/QmVWqz7mBBAhperK9efuUTJpqCA5SmeCYpnpg6NrhMHbDe\"]}},\"version\":1}",
+    "bytecode": "60c0604052600f60808190526e6441707020546f6b656e206661726d60881b60a09081526100309160009190610090565b5034801561003d57600080fd5b5060405161054f38038061054f83398101604081905261005c91610141565b600180546001600160a01b039283166001600160a01b031991821617909155600280549390921692169190911790556101b6565b82805461009c9061017b565b90600052602060002090601f0160209004810192826100be5760008555610104565b82601f106100d757805160ff1916838001178555610104565b82800160010185558215610104579182015b828111156101045782518255916020019190600101906100e9565b50610110929150610114565b5090565b5b808211156101105760008155600101610115565b6001600160a01b038116811461013e57600080fd5b50565b6000806040838503121561015457600080fd5b825161015f81610129565b602084015190925061017081610129565b809150509250929050565b600181811c9082168061018f57607f821691505b602082108114156101b057634e487b7160e01b600052602260045260246000fd5b50919050565b61038a806101c56000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c806306fdde031461005c57806345bc78ab1461007a5780635eb186f8146100a85780637547c7a3146100d3578063be22f546146100e8575b600080fd5b6100646100fb565b6040516100719190610233565b60405180910390f35b61009a610088366004610288565b60036020526000908152604090205481565b604051908152602001610071565b6002546100bb906001600160a01b031681565b6040516001600160a01b039091168152602001610071565b6100e66100e13660046102b8565b610189565b005b6001546100bb906001600160a01b031681565b60008054610108906102d1565b80601f0160208091040260200160405190810160405280929190818152602001828054610134906102d1565b80156101815780601f1061015657610100808354040283529160200191610181565b820191906000526020600020905b81548152906001019060200180831161016457829003601f168201915b505050505081565b6001546040516323b872dd60e01b8152336004820152306024820152604481018390526001600160a01b03909116906323b872dd906064016020604051808303816000875af11580156101e0573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610204919061030c565b503360009081526003602052604090205461022090829061032e565b3360009081526003602052604090205550565b600060208083528351808285015260005b8181101561026057858101830151858201604001528201610244565b81811115610272576000604083870101525b50601f01601f1916929092016040019392505050565b60006020828403121561029a57600080fd5b81356001600160a01b03811681146102b157600080fd5b9392505050565b6000602082840312156102ca57600080fd5b5035919050565b600181811c908216806102e557607f821691505b6020821081141561030657634e487b7160e01b600052602260045260246000fd5b50919050565b60006020828403121561031e57600080fd5b815180151581146102b157600080fd5b6000821982111561034f57634e487b7160e01b600052601160045260246000fd5b50019056fea2646970667358221220ee97873480f1b9afd8f04260f12f9dc0d4650835367b585d34b844d0c23916b564736f6c634300080b0033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100575760003560e01c806306fdde031461005c57806345bc78ab1461007a5780635eb186f8146100a85780637547c7a3146100d3578063be22f546146100e8575b600080fd5b6100646100fb565b6040516100719190610233565b60405180910390f35b61009a610088366004610288565b60036020526000908152604090205481565b604051908152602001610071565b6002546100bb906001600160a01b031681565b6040516001600160a01b039091168152602001610071565b6100e66100e13660046102b8565b610189565b005b6001546100bb906001600160a01b031681565b60008054610108906102d1565b80601f0160208091040260200160405190810160405280929190818152602001828054610134906102d1565b80156101815780601f1061015657610100808354040283529160200191610181565b820191906000526020600020905b81548152906001019060200180831161016457829003601f168201915b505050505081565b6001546040516323b872dd60e01b8152336004820152306024820152604481018390526001600160a01b03909116906323b872dd906064016020604051808303816000875af11580156101e0573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610204919061030c565b503360009081526003602052604090205461022090829061032e565b3360009081526003602052604090205550565b600060208083528351808285015260005b8181101561026057858101830151858201604001528201610244565b81811115610272576000604083870101525b50601f01601f1916929092016040019392505050565b60006020828403121561029a57600080fd5b81356001600160a01b03811681146102b157600080fd5b9392505050565b6000602082840312156102ca57600080fd5b5035919050565b600181811c908216806102e557607f821691505b6020821081141561030657634e487b7160e01b600052602260045260246000fd5b50919050565b60006020828403121561031e57600080fd5b815180151581146102b157600080fd5b6000821982111561034f57634e487b7160e01b600052601160045260246000fd5b50019056fea2646970667358221220ee97873480f1b9afd8f04260f12f9dc0d4650835367b585d34b844d0c23916b564736f6c634300080b0033",
+    "sourceMap": "103:38:2:-:0;78:634;103:38;;78:634;103:38;;;-1:-1:-1;;;103:38:2;;;;;;-1:-1:-1;;103:38:2;;:::i;:::-;;266:123;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;330:8;:20;;-1:-1:-1;;;;;330:20:2;;;-1:-1:-1;;;;;;330:20:2;;;;;;;360:9;:22;;;;;;;;;;;;;;78:634;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;78:634:2;;;-1:-1:-1;78:634:2;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;14:142:3;-1:-1:-1;;;;;100:31:3;;90:42;;80:70;;146:1;143;136:12;80:70;14:142;:::o;161:440::-;273:6;281;334:2;322:9;313:7;309:23;305:32;302:52;;;350:1;347;340:12;302:52;382:9;376:16;401:42;437:5;401:42;:::i;:::-;512:2;497:18;;491:25;462:5;;-1:-1:-1;525:44:3;491:25;525:44;:::i;:::-;588:7;578:17;;;161:440;;;;;:::o;606:380::-;685:1;681:12;;;;728;;;749:61;;803:4;795:6;791:17;781:27;;749:61;856:2;848:6;845:14;825:18;822:38;819:161;;;902:10;897:3;893:20;890:1;883:31;937:4;934:1;927:15;965:4;962:1;955:15;819:161;;606:380;;;:::o;:::-;78:634:2;;;;;;",
+    "deployedSourceMap": "78:634:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;103:38;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;210:49;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;1053:25:3;;;1041:2;1026:18;210:49:2;907:177:3;177:26:2;;;;;-1:-1:-1;;;;;177:26:2;;;;;;-1:-1:-1;;;;;1270:32:3;;;1252:51;;1240:2;1225:18;177:26:2;1089:220:3;395:248:2;;;;;;:::i;:::-;;:::i;:::-;;147:24;;;;;-1:-1:-1;;;;;147:24:2;;;103:38;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;395:248::-;503:8;;:57;;-1:-1:-1;;;503:57:2;;525:10;503:57;;;2348:34:3;545:4:2;2398:18:3;;;2391:43;2450:18;;;2443:34;;;-1:-1:-1;;;;;503:8:2;;;;:21;;2283:18:3;;503:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;615:10:2;600:26;;;;:14;:26;;;;;;:36;;629:7;;600:36;:::i;:::-;586:10;571:26;;;;:14;:26;;;;;:65;-1:-1:-1;395:248:2:o;14:597:3:-;126:4;155:2;184;173:9;166:21;216:6;210:13;259:6;254:2;243:9;239:18;232:34;284:1;294:140;308:6;305:1;302:13;294:140;;;403:14;;;399:23;;393:30;369:17;;;388:2;365:26;358:66;323:10;;294:140;;;452:6;449:1;446:13;443:91;;;522:1;517:2;508:6;497:9;493:22;489:31;482:42;443:91;-1:-1:-1;595:2:3;574:15;-1:-1:-1;;570:29:3;555:45;;;;602:2;551:54;;14:597;-1:-1:-1;;;14:597:3:o;616:286::-;675:6;728:2;716:9;707:7;703:23;699:32;696:52;;;744:1;741;734:12;696:52;770:23;;-1:-1:-1;;;;;822:31:3;;812:42;;802:70;;868:1;865;858:12;802:70;891:5;616:286;-1:-1:-1;;;616:286:3:o;1314:180::-;1373:6;1426:2;1414:9;1405:7;1401:23;1397:32;1394:52;;;1442:1;1439;1432:12;1394:52;-1:-1:-1;1465:23:3;;1314:180;-1:-1:-1;1314:180:3:o;1723:380::-;1802:1;1798:12;;;;1845;;;1866:61;;1920:4;1912:6;1908:17;1898:27;;1866:61;1973:2;1965:6;1962:14;1942:18;1939:38;1936:161;;;2019:10;2014:3;2010:20;2007:1;2000:31;2054:4;2051:1;2044:15;2082:4;2079:1;2072:15;1936:161;;1723:380;;;:::o;2488:277::-;2555:6;2608:2;2596:9;2587:7;2583:23;2579:32;2576:52;;;2624:1;2621;2614:12;2576:52;2656:9;2650:16;2709:5;2702:13;2695:21;2688:5;2685:32;2675:60;;2731:1;2728;2721:12;2770:225;2810:3;2841:1;2837:6;2834:1;2831:13;2828:136;;;2886:10;2881:3;2877:20;2874:1;2867:31;2921:4;2918:1;2911:15;2949:4;2946:1;2939:15;2828:136;-1:-1:-1;2980:9:3;;2770:225::o",
+    "sourcePath": "/Users/dani/Desktop/dApp/src/contracts/TokenFarm.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.11+commit.d7f03943"
+    },
+    "ast": {
+        "absolutePath": "/Users/dani/Desktop/dApp/src/contracts/TokenFarm.sol",
+        "exportedSymbols": {
+            "DaiToken": [
+                180
+            ],
+            "DappToken": [
+                361
+            ],
+            "TokenFarm": [
+                427
+            ]
+        },
+        "id": 428,
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 363,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".11"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "0:24:2"
+            },
+            {
+                "absolutePath": "/Users/dani/Desktop/dApp/src/contracts/DappToken.sol",
+                "file": "./DappToken.sol",
+                "id": 364,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 428,
+                "sourceUnit": 362,
+                "src": "26:25:2",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/dani/Desktop/dApp/src/contracts/DaiToken.sol",
+                "file": "./DaiToken.sol",
+                "id": 365,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 428,
+                "sourceUnit": 181,
+                "src": "52:24:2",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "TokenFarm",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 427,
+                "linearizedBaseContracts": [
+                    427
+                ],
+                "name": "TokenFarm",
+                "nameLocation": "87:9:2",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "06fdde03",
+                        "id": 368,
+                        "mutability": "mutable",
+                        "name": "name",
+                        "nameLocation": "117:4:2",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "103:38:2",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 366,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "103:6:2",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "6441707020546f6b656e206661726d",
+                            "id": 367,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "string",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "124:17:2",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_45ca84904fc8ec07561a7877db016525e930c740658e4f9f73d6825ce456c40e",
+                                "typeString": "literal_string \"dApp Token farm\""
+                            },
+                            "value": "dApp Token farm"
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "be22f546",
+                        "id": 371,
+                        "mutability": "mutable",
+                        "name": "daiToken",
+                        "nameLocation": "163:8:2",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "147:24:2",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_DaiToken_$180",
+                            "typeString": "contract DaiToken"
+                        },
+                        "typeName": {
+                            "id": 370,
+                            "nodeType": "UserDefinedTypeName",
+                            "pathNode": {
+                                "id": 369,
+                                "name": "DaiToken",
+                                "nodeType": "IdentifierPath",
+                                "referencedDeclaration": 180,
+                                "src": "147:8:2"
+                            },
+                            "referencedDeclaration": 180,
+                            "src": "147:8:2",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_DaiToken_$180",
+                                "typeString": "contract DaiToken"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "5eb186f8",
+                        "id": 374,
+                        "mutability": "mutable",
+                        "name": "dappToken",
+                        "nameLocation": "194:9:2",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "177:26:2",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_DappToken_$361",
+                            "typeString": "contract DappToken"
+                        },
+                        "typeName": {
+                            "id": 373,
+                            "nodeType": "UserDefinedTypeName",
+                            "pathNode": {
+                                "id": 372,
+                                "name": "DappToken",
+                                "nodeType": "IdentifierPath",
+                                "referencedDeclaration": 361,
+                                "src": "177:9:2"
+                            },
+                            "referencedDeclaration": 361,
+                            "src": "177:9:2",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_DappToken_$361",
+                                "typeString": "contract DappToken"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "45bc78ab",
+                        "id": 378,
+                        "mutability": "mutable",
+                        "name": "stakingBalance",
+                        "nameLocation": "245:14:2",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 427,
+                        "src": "210:49:2",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                            "typeString": "mapping(address => uint256)"
+                        },
+                        "typeName": {
+                            "id": 377,
+                            "keyType": {
+                                "id": 375,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "218:7:2",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "210:27:2",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                                "typeString": "mapping(address => uint256)"
+                            },
+                            "valueType": {
+                                "id": 376,
+                                "name": "uint256",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "229:7:2",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 395,
+                            "nodeType": "Block",
+                            "src": "320:69:2",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 389,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 387,
+                                            "name": "daiToken",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 371,
+                                            "src": "330:8:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_DaiToken_$180",
+                                                "typeString": "contract DaiToken"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 388,
+                                            "name": "_daiToken",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 384,
+                                            "src": "341:9:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_DaiToken_$180",
+                                                "typeString": "contract DaiToken"
+                                            }
+                                        },
+                                        "src": "330:20:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_DaiToken_$180",
+                                            "typeString": "contract DaiToken"
+                                        }
+                                    },
+                                    "id": 390,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "330:20:2"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 393,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 391,
+                                            "name": "dappToken",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 374,
+                                            "src": "360:9:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_DappToken_$361",
+                                                "typeString": "contract DappToken"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 392,
+                                            "name": "_dappToken",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 381,
+                                            "src": "372:10:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_DappToken_$361",
+                                                "typeString": "contract DappToken"
+                                            }
+                                        },
+                                        "src": "360:22:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_DappToken_$361",
+                                            "typeString": "contract DappToken"
+                                        }
+                                    },
+                                    "id": 394,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "360:22:2"
+                                }
+                            ]
+                        },
+                        "id": 396,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 385,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 381,
+                                    "mutability": "mutable",
+                                    "name": "_dappToken",
+                                    "nameLocation": "288:10:2",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 396,
+                                    "src": "278:20:2",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_contract$_DappToken_$361",
+                                        "typeString": "contract DappToken"
+                                    },
+                                    "typeName": {
+                                        "id": 380,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 379,
+                                            "name": "DappToken",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 361,
+                                            "src": "278:9:2"
+                                        },
+                                        "referencedDeclaration": 361,
+                                        "src": "278:9:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_DappToken_$361",
+                                            "typeString": "contract DappToken"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 384,
+                                    "mutability": "mutable",
+                                    "name": "_daiToken",
+                                    "nameLocation": "309:9:2",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 396,
+                                    "src": "300:18:2",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_contract$_DaiToken_$180",
+                                        "typeString": "contract DaiToken"
+                                    },
+                                    "typeName": {
+                                        "id": 383,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 382,
+                                            "name": "DaiToken",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 180,
+                                            "src": "300:8:2"
+                                        },
+                                        "referencedDeclaration": 180,
+                                        "src": "300:8:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_DaiToken_$180",
+                                            "typeString": "contract DaiToken"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "277:42:2"
+                        },
+                        "returnParameters": {
+                            "id": 386,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "320:0:2"
+                        },
+                        "scope": 427,
+                        "src": "266:123:2",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 425,
+                            "nodeType": "Block",
+                            "src": "440:203:2",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "expression": {
+                                                    "id": 404,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4294967281,
+                                                    "src": "525:3:2",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 405,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "525:10:2",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            {
+                                                "arguments": [
+                                                    {
+                                                        "id": 408,
+                                                        "name": "this",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967268,
+                                                        "src": "545:4:2",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_contract$_TokenFarm_$427",
+                                                            "typeString": "contract TokenFarm"
+                                                        }
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "argumentTypes": [
+                                                        {
+                                                            "typeIdentifier": "t_contract$_TokenFarm_$427",
+                                                            "typeString": "contract TokenFarm"
+                                                        }
+                                                    ],
+                                                    "id": 407,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "nodeType": "ElementaryTypeNameExpression",
+                                                    "src": "537:7:2",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_type$_t_address_$",
+                                                        "typeString": "type(address)"
+                                                    },
+                                                    "typeName": {
+                                                        "id": 406,
+                                                        "name": "address",
+                                                        "nodeType": "ElementaryTypeName",
+                                                        "src": "537:7:2",
+                                                        "typeDescriptions": {}
+                                                    }
+                                                },
+                                                "id": 409,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "kind": "typeConversion",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "537:13:2",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            {
+                                                "id": 410,
+                                                "name": "_amount",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 398,
+                                                "src": "552:7:2",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            ],
+                                            "expression": {
+                                                "id": 401,
+                                                "name": "daiToken",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 371,
+                                                "src": "503:8:2",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_DaiToken_$180",
+                                                    "typeString": "contract DaiToken"
+                                                }
+                                            },
+                                            "id": 403,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "transferFrom",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 179,
+                                            "src": "503:21:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
+                                                "typeString": "function (address,address,uint256) external returns (bool)"
+                                            }
+                                        },
+                                        "id": 411,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "503:57:2",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "id": 412,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "503:57:2"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 423,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 413,
+                                                "name": "stakingBalance",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 378,
+                                                "src": "571:14:2",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                                                    "typeString": "mapping(address => uint256)"
+                                                }
+                                            },
+                                            "id": 416,
+                                            "indexExpression": {
+                                                "expression": {
+                                                    "id": 414,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4294967281,
+                                                    "src": "586:3:2",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 415,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "586:10:2",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "571:26:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "commonType": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "id": 422,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "leftExpression": {
+                                                "baseExpression": {
+                                                    "id": 417,
+                                                    "name": "stakingBalance",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 378,
+                                                    "src": "600:14:2",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                                                        "typeString": "mapping(address => uint256)"
+                                                    }
+                                                },
+                                                "id": 420,
+                                                "indexExpression": {
+                                                    "expression": {
+                                                        "id": 418,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967281,
+                                                        "src": "615:3:2",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 419,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "sender",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "615:10:2",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "isConstant": false,
+                                                "isLValue": true,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "nodeType": "IndexAccess",
+                                                "src": "600:26:2",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "nodeType": "BinaryOperation",
+                                            "operator": "+",
+                                            "rightExpression": {
+                                                "id": 421,
+                                                "name": "_amount",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 398,
+                                                "src": "629:7:2",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "src": "600:36:2",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "571:65:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 424,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "571:65:2"
+                                }
+                            ]
+                        },
+                        "functionSelector": "7547c7a3",
+                        "id": 426,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "stakeTokens",
+                        "nameLocation": "404:11:2",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 399,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 398,
+                                    "mutability": "mutable",
+                                    "name": "_amount",
+                                    "nameLocation": "424:7:2",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 426,
+                                    "src": "416:15:2",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 397,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "416:7:2",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "415:17:2"
+                        },
+                        "returnParameters": {
+                            "id": 400,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "440:0:2"
+                        },
+                        "scope": 427,
+                        "src": "395:248:2",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 428,
+                "src": "78:634:2",
+                "usedErrors": []
+            }
+        ],
+        "src": "0:713:2"
+    },
+    "functionHashes": {
+        "daiToken()": "be22f546",
+        "dappToken()": "5eb186f8",
+        "name()": "06fdde03",
+        "stakeTokens(uint256)": "7547c7a3",
+        "stakingBalance(address)": "45bc78ab"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "181200",
+            "executionCost": "infinite",
+            "totalCost": "infinite"
+        },
+        "external": {
+            "daiToken()": "2403",
+            "dappToken()": "2359",
+            "name()": "infinite",
+            "stakeTokens(uint256)": "infinite",
+            "stakingBalance(address)": "2484"
+        }
+    }
+}
